@@ -17,7 +17,7 @@ endef
 #Uses govendor tool to add all depencies into vendor.json (for .go files only)
 define govendor
 go get -u github.com/kardianos/govendor && \
-cd /home/travis/gopath/src && \
+cd $(GOPATH)/src && \
 govendor init && \
 govendor sync && \
 govendor add +external && \
