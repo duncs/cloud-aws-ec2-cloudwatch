@@ -1,0 +1,677 @@
+{
+   "attribute" : [
+      {
+         "arg1" : "/usr/local/nagios/etc/aws_credentials.cfg",
+         "arg2" : "",
+         "arg4" : "eu-west-1",
+         "label1" : "File Path",
+         "label2" : "Access Key",
+         "label3" : "Secret Key",
+         "label4" : "Region",
+         "name" : "AWS_CLOUDWATCH_AUTHENTICATION",
+         "secured1" : "0",
+         "secured2" : "0",
+         "secured3" : "1",
+         "secured4" : "0",
+         "value" : ""
+      },
+      {
+         "arg1" : "",
+         "arg2" : "",
+         "arg3" : "",
+         "arg4" : "",
+         "label1" : "",
+         "label2" : "",
+         "label3" : "",
+         "label4" : "",
+         "name" : "AWS_EC2_INSTANCE_ID",
+         "secured1" : "0",
+         "secured2" : "0",
+         "secured3" : "0",
+         "secured4" : "0",
+         "value" : ""
+      }
+   ],
+   "hosttemplate" : [
+      {
+         "description" : "Monitor metrics taken from cloudwatch on EC2 performance",
+         "has_icon" : "0",
+         "managementurls" : [],
+         "name" : "Cloud - AWS - EC2 CloudWatch",
+         "servicechecks" : [
+            {
+               "event_handler" : null,
+               "exception" : null,
+               "name" : "AWS - EC2 - CPU Credit Balance",
+               "timed_exception" : null
+            },
+            {
+               "event_handler" : null,
+               "exception" : null,
+               "name" : "AWS - EC2 - CPU Credit Usage",
+               "timed_exception" : null
+            },
+            {
+               "event_handler" : null,
+               "exception" : null,
+               "name" : "AWS - EC2 - CPU Utilization",
+               "timed_exception" : null
+            },
+            {
+               "event_handler" : null,
+               "exception" : null,
+               "name" : "AWS - EC2 - Disk Read Bytes",
+               "timed_exception" : null
+            },
+            {
+               "event_handler" : null,
+               "exception" : null,
+               "name" : "AWS - EC2 - Disk Read Ops",
+               "timed_exception" : null
+            },
+            {
+               "event_handler" : null,
+               "exception" : null,
+               "name" : "AWS - EC2 - Disk Write Bytes",
+               "timed_exception" : null
+            },
+            {
+               "event_handler" : null,
+               "exception" : null,
+               "name" : "AWS - EC2 - Disk Write Ops",
+               "timed_exception" : null
+            },
+            {
+               "event_handler" : null,
+               "exception" : null,
+               "name" : "AWS - EC2 - Network In",
+               "timed_exception" : null
+            },
+            {
+               "event_handler" : null,
+               "exception" : null,
+               "name" : "AWS - EC2 - Network Out",
+               "timed_exception" : null
+            },
+            {
+               "event_handler" : null,
+               "exception" : null,
+               "name" : "AWS - EC2 - Network Packets In",
+               "timed_exception" : null
+            },
+            {
+               "event_handler" : null,
+               "exception" : null,
+               "name" : "AWS - EC2 - Network Packets Out",
+               "timed_exception" : null
+            },
+            {
+               "event_handler" : null,
+               "exception" : null,
+               "name" : "AWS - EC2 - Status Check Failed",
+               "timed_exception" : null
+            }
+         ]
+      }
+   ],
+   "keyword" : [],
+   "servicecheck" : [
+      {
+         "alert_from_failure" : "1",
+         "args" : "-a $HOSTADDRESS$ -w 500 -c 800 -m 'AWS/EC2.CPUCreditBalance' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "attribute" : null,
+         "calculate_rate" : "no",
+         "cascaded_from" : null,
+         "check_attempts" : "3",
+         "check_freshness" : "0",
+         "check_interval" : "300",
+         "checktype" : {
+            "name" : "Active Plugin"
+         },
+         "critical_comparison" : null,
+         "critical_value" : null,
+         "dependencies" : [],
+         "description" : "CPU balance",
+         "event_handler" : "",
+         "event_handler_always_exec" : "0",
+         "flap_detection_enabled" : "1",
+         "freshness_type" : "renotify",
+         "invertresults" : "0",
+         "keywords" : [],
+         "label" : null,
+         "level" : 0,
+         "markdown_filter" : "0",
+         "name" : "AWS - EC2 - CPU Credit Balance",
+         "notification_interval" : null,
+         "notification_options" : "w,c,r,u,f",
+         "oid" : null,
+         "plugin" : {
+            "name" : "check_aws_cloudwatch"
+         },
+         "retry_check_interval" : "60",
+         "sensitive_arguments" : "1",
+         "servicegroup" : {
+            "name" : "Cloud - AWS - EC2"
+         },
+         "snmptraprules" : [],
+         "stale_state" : "0",
+         "stale_text" : "",
+         "stale_threshold_seconds" : "3600",
+         "stalking" : "",
+         "volatile" : "0",
+         "warning_comparison" : null,
+         "warning_value" : null
+      },
+      {
+         "alert_from_failure" : "1",
+         "args" : "-a $HOSTADDRESS$ -w 500 -c 800 -m 'AWS/EC2.CPUCreditUsage' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "attribute" : null,
+         "calculate_rate" : null,
+         "cascaded_from" : null,
+         "check_attempts" : "3",
+         "check_freshness" : "0",
+         "check_interval" : "300",
+         "checktype" : {
+            "name" : "Active Plugin"
+         },
+         "critical_comparison" : null,
+         "critical_value" : null,
+         "dependencies" : [],
+         "description" : "CPU Usage",
+         "event_handler" : "",
+         "event_handler_always_exec" : "0",
+         "flap_detection_enabled" : "1",
+         "freshness_type" : "renotify",
+         "invertresults" : "0",
+         "keywords" : [],
+         "label" : null,
+         "level" : 0,
+         "markdown_filter" : "0",
+         "name" : "AWS - EC2 - CPU Credit Usage",
+         "notification_interval" : null,
+         "notification_options" : "w,c,r,u,f",
+         "oid" : null,
+         "plugin" : {
+            "name" : "check_aws_cloudwatch"
+         },
+         "retry_check_interval" : "60",
+         "sensitive_arguments" : "1",
+         "servicegroup" : {
+            "name" : "Cloud - AWS - EC2"
+         },
+         "snmptraprules" : [],
+         "stale_state" : "0",
+         "stale_text" : "",
+         "stale_threshold_seconds" : "3600",
+         "stalking" : "",
+         "volatile" : "0",
+         "warning_comparison" : null,
+         "warning_value" : null
+      },
+      {
+         "alert_from_failure" : "1",
+         "args" : "-a $HOSTADDRESS$ -w 80 -c 90 -m 'AWS/EC2.CPUUtilization' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "attribute" : null,
+         "calculate_rate" : "no",
+         "cascaded_from" : null,
+         "check_attempts" : "3",
+         "check_freshness" : "0",
+         "check_interval" : "300",
+         "checktype" : {
+            "name" : "Active Plugin"
+         },
+         "critical_comparison" : null,
+         "critical_value" : null,
+         "dependencies" : [],
+         "description" : "CPU Usage",
+         "event_handler" : "",
+         "event_handler_always_exec" : "0",
+         "flap_detection_enabled" : "1",
+         "freshness_type" : "renotify",
+         "invertresults" : "0",
+         "keywords" : [],
+         "label" : null,
+         "level" : 0,
+         "markdown_filter" : "0",
+         "name" : "AWS - EC2 - CPU Utilization",
+         "notification_interval" : null,
+         "notification_options" : "w,c,r,u,f",
+         "oid" : null,
+         "plugin" : {
+            "name" : "check_aws_cloudwatch"
+         },
+         "retry_check_interval" : "60",
+         "sensitive_arguments" : "1",
+         "servicegroup" : {
+            "name" : "Cloud - AWS - EC2"
+         },
+         "snmptraprules" : [],
+         "stale_state" : "0",
+         "stale_text" : "",
+         "stale_threshold_seconds" : "3600",
+         "stalking" : "",
+         "volatile" : "0",
+         "warning_comparison" : null,
+         "warning_value" : null
+      },
+      {
+         "alert_from_failure" : "1",
+         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.DiskReadBytes' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "attribute" : null,
+         "calculate_rate" : "no",
+         "cascaded_from" : null,
+         "check_attempts" : "3",
+         "check_freshness" : "0",
+         "check_interval" : "300",
+         "checktype" : {
+            "name" : "Active Plugin"
+         },
+         "critical_comparison" : null,
+         "critical_value" : null,
+         "dependencies" : [],
+         "description" : "Number of read bytes",
+         "event_handler" : "",
+         "event_handler_always_exec" : "0",
+         "flap_detection_enabled" : "1",
+         "freshness_type" : "renotify",
+         "invertresults" : "0",
+         "keywords" : [],
+         "label" : null,
+         "level" : 0,
+         "markdown_filter" : "0",
+         "name" : "AWS - EC2 - Disk Read Bytes",
+         "notification_interval" : null,
+         "notification_options" : "w,c,r,u,f",
+         "oid" : null,
+         "plugin" : {
+            "name" : "check_aws_cloudwatch"
+         },
+         "retry_check_interval" : "60",
+         "sensitive_arguments" : "1",
+         "servicegroup" : {
+            "name" : "Cloud - AWS - EC2"
+         },
+         "snmptraprules" : [],
+         "stale_state" : "0",
+         "stale_text" : "",
+         "stale_threshold_seconds" : "3600",
+         "stalking" : "",
+         "volatile" : "0",
+         "warning_comparison" : null,
+         "warning_value" : null
+      },
+      {
+         "alert_from_failure" : "1",
+         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.DiskReadOps' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "attribute" : null,
+         "calculate_rate" : "no",
+         "cascaded_from" : null,
+         "check_attempts" : "3",
+         "check_freshness" : "0",
+         "check_interval" : "300",
+         "checktype" : {
+            "name" : "Active Plugin"
+         },
+         "critical_comparison" : null,
+         "critical_value" : null,
+         "dependencies" : [],
+         "description" : "Number of disk reads",
+         "event_handler" : "",
+         "event_handler_always_exec" : "0",
+         "flap_detection_enabled" : "1",
+         "freshness_type" : "renotify",
+         "invertresults" : "0",
+         "keywords" : [],
+         "label" : null,
+         "level" : 0,
+         "markdown_filter" : "0",
+         "name" : "AWS - EC2 - Disk Read Ops",
+         "notification_interval" : null,
+         "notification_options" : "w,c,r,u,f",
+         "oid" : null,
+         "plugin" : {
+            "name" : "check_aws_cloudwatch"
+         },
+         "retry_check_interval" : "60",
+         "sensitive_arguments" : "1",
+         "servicegroup" : {
+            "name" : "Cloud - AWS - EC2"
+         },
+         "snmptraprules" : [],
+         "stale_state" : "0",
+         "stale_text" : "",
+         "stale_threshold_seconds" : "3600",
+         "stalking" : "",
+         "volatile" : "0",
+         "warning_comparison" : null,
+         "warning_value" : null
+      },
+      {
+         "alert_from_failure" : "1",
+         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.DiskWriteBytes' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "attribute" : null,
+         "calculate_rate" : "no",
+         "cascaded_from" : null,
+         "check_attempts" : "3",
+         "check_freshness" : "0",
+         "check_interval" : "300",
+         "checktype" : {
+            "name" : "Active Plugin"
+         },
+         "critical_comparison" : null,
+         "critical_value" : null,
+         "dependencies" : [],
+         "description" : "Number of write bytes",
+         "event_handler" : "",
+         "event_handler_always_exec" : "0",
+         "flap_detection_enabled" : "1",
+         "freshness_type" : "renotify",
+         "invertresults" : "0",
+         "keywords" : [],
+         "label" : null,
+         "level" : 0,
+         "markdown_filter" : "0",
+         "name" : "AWS - EC2 - Disk Write Bytes",
+         "notification_interval" : null,
+         "notification_options" : "w,c,r,u,f",
+         "oid" : null,
+         "plugin" : {
+            "name" : "check_aws_cloudwatch"
+         },
+         "retry_check_interval" : "60",
+         "sensitive_arguments" : "1",
+         "servicegroup" : {
+            "name" : "Cloud - AWS - EC2"
+         },
+         "snmptraprules" : [],
+         "stale_state" : "0",
+         "stale_text" : "",
+         "stale_threshold_seconds" : "3600",
+         "stalking" : "",
+         "volatile" : "0",
+         "warning_comparison" : null,
+         "warning_value" : null
+      },
+      {
+         "alert_from_failure" : "1",
+         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.DiskWriteOps' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "attribute" : null,
+         "calculate_rate" : "no",
+         "cascaded_from" : null,
+         "check_attempts" : "3",
+         "check_freshness" : "0",
+         "check_interval" : "300",
+         "checktype" : {
+            "name" : "Active Plugin"
+         },
+         "critical_comparison" : null,
+         "critical_value" : null,
+         "dependencies" : [],
+         "description" : "Number of write reads",
+         "event_handler" : "",
+         "event_handler_always_exec" : "0",
+         "flap_detection_enabled" : "1",
+         "freshness_type" : "renotify",
+         "invertresults" : "0",
+         "keywords" : [],
+         "label" : null,
+         "level" : 0,
+         "markdown_filter" : "0",
+         "name" : "AWS - EC2 - Disk Write Ops",
+         "notification_interval" : null,
+         "notification_options" : "w,c,r,u,f",
+         "oid" : null,
+         "plugin" : {
+            "name" : "check_aws_cloudwatch"
+         },
+         "retry_check_interval" : "60",
+         "sensitive_arguments" : "1",
+         "servicegroup" : {
+            "name" : "Cloud - AWS - EC2"
+         },
+         "snmptraprules" : [],
+         "stale_state" : "0",
+         "stale_text" : "",
+         "stale_threshold_seconds" : "3600",
+         "stalking" : "",
+         "volatile" : "0",
+         "warning_comparison" : null,
+         "warning_value" : null
+      },
+      {
+         "alert_from_failure" : "1",
+         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.NetworkIn' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "attribute" : null,
+         "calculate_rate" : "no",
+         "cascaded_from" : null,
+         "check_attempts" : "3",
+         "check_freshness" : "0",
+         "check_interval" : "300",
+         "checktype" : {
+            "name" : "Active Plugin"
+         },
+         "critical_comparison" : null,
+         "critical_value" : null,
+         "dependencies" : [],
+         "description" : "Data sent to the network",
+         "event_handler" : "",
+         "event_handler_always_exec" : "0",
+         "flap_detection_enabled" : "1",
+         "freshness_type" : "renotify",
+         "invertresults" : "0",
+         "keywords" : [],
+         "label" : null,
+         "level" : 0,
+         "markdown_filter" : "0",
+         "name" : "AWS - EC2 - Network In",
+         "notification_interval" : null,
+         "notification_options" : "w,c,r,u,f",
+         "oid" : null,
+         "plugin" : {
+            "name" : "check_aws_cloudwatch"
+         },
+         "retry_check_interval" : "60",
+         "sensitive_arguments" : "1",
+         "servicegroup" : {
+            "name" : "Cloud - AWS - EC2"
+         },
+         "snmptraprules" : [],
+         "stale_state" : "0",
+         "stale_text" : "",
+         "stale_threshold_seconds" : "3600",
+         "stalking" : "",
+         "volatile" : "0",
+         "warning_comparison" : null,
+         "warning_value" : null
+      },
+      {
+         "alert_from_failure" : "1",
+         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.NetworkOut' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "attribute" : null,
+         "calculate_rate" : "no",
+         "cascaded_from" : null,
+         "check_attempts" : "3",
+         "check_freshness" : "0",
+         "check_interval" : "300",
+         "checktype" : {
+            "name" : "Active Plugin"
+         },
+         "critical_comparison" : null,
+         "critical_value" : null,
+         "dependencies" : [],
+         "description" : "Data sent from the network",
+         "event_handler" : "",
+         "event_handler_always_exec" : "0",
+         "flap_detection_enabled" : "1",
+         "freshness_type" : "renotify",
+         "invertresults" : "0",
+         "keywords" : [],
+         "label" : null,
+         "level" : 0,
+         "markdown_filter" : "0",
+         "name" : "AWS - EC2 - Network Out",
+         "notification_interval" : null,
+         "notification_options" : "w,c,r,u,f",
+         "oid" : null,
+         "plugin" : {
+            "name" : "check_aws_cloudwatch"
+         },
+         "retry_check_interval" : "60",
+         "sensitive_arguments" : "1",
+         "servicegroup" : {
+            "name" : "Cloud - AWS - EC2"
+         },
+         "snmptraprules" : [],
+         "stale_state" : "0",
+         "stale_text" : "",
+         "stale_threshold_seconds" : "3600",
+         "stalking" : "",
+         "volatile" : "0",
+         "warning_comparison" : null,
+         "warning_value" : null
+      },
+      {
+         "alert_from_failure" : "1",
+         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.NetworkPacketsIn' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "attribute" : null,
+         "calculate_rate" : "no",
+         "cascaded_from" : null,
+         "check_attempts" : "3",
+         "check_freshness" : "0",
+         "check_interval" : "300",
+         "checktype" : {
+            "name" : "Active Plugin"
+         },
+         "critical_comparison" : null,
+         "critical_value" : null,
+         "dependencies" : [],
+         "description" : "Number of packets received",
+         "event_handler" : "",
+         "event_handler_always_exec" : "0",
+         "flap_detection_enabled" : "1",
+         "freshness_type" : "renotify",
+         "invertresults" : "0",
+         "keywords" : [],
+         "label" : null,
+         "level" : 0,
+         "markdown_filter" : "0",
+         "name" : "AWS - EC2 - Network Packets In",
+         "notification_interval" : null,
+         "notification_options" : "w,c,r,u,f",
+         "oid" : null,
+         "plugin" : {
+            "name" : "check_aws_cloudwatch"
+         },
+         "retry_check_interval" : "60",
+         "sensitive_arguments" : "1",
+         "servicegroup" : {
+            "name" : "Cloud - AWS - EC2"
+         },
+         "snmptraprules" : [],
+         "stale_state" : "0",
+         "stale_text" : "",
+         "stale_threshold_seconds" : "3600",
+         "stalking" : "",
+         "volatile" : "0",
+         "warning_comparison" : null,
+         "warning_value" : null
+      },
+      {
+         "alert_from_failure" : "1",
+         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.NetworkPacketsOut' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "attribute" : null,
+         "calculate_rate" : "no",
+         "cascaded_from" : null,
+         "check_attempts" : "3",
+         "check_freshness" : "0",
+         "check_interval" : "300",
+         "checktype" : {
+            "name" : "Active Plugin"
+         },
+         "critical_comparison" : null,
+         "critical_value" : null,
+         "dependencies" : [],
+         "description" : "Number of packets sent",
+         "event_handler" : "",
+         "event_handler_always_exec" : "0",
+         "flap_detection_enabled" : "1",
+         "freshness_type" : "renotify",
+         "invertresults" : "0",
+         "keywords" : [],
+         "label" : null,
+         "level" : 0,
+         "markdown_filter" : "0",
+         "name" : "AWS - EC2 - Network Packets Out",
+         "notification_interval" : null,
+         "notification_options" : "w,c,r,u,f",
+         "oid" : null,
+         "plugin" : {
+            "name" : "check_aws_cloudwatch"
+         },
+         "retry_check_interval" : "60",
+         "sensitive_arguments" : "1",
+         "servicegroup" : {
+            "name" : "Cloud - AWS - EC2"
+         },
+         "snmptraprules" : [],
+         "stale_state" : "0",
+         "stale_text" : "",
+         "stale_threshold_seconds" : "3600",
+         "stalking" : "",
+         "volatile" : "0",
+         "warning_comparison" : null,
+         "warning_value" : null
+      },
+      {
+         "alert_from_failure" : "1",
+         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.StatusCheckFailed' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "attribute" : null,
+         "calculate_rate" : "no",
+         "cascaded_from" : null,
+         "check_attempts" : "3",
+         "check_freshness" : "0",
+         "check_interval" : "300",
+         "checktype" : {
+            "name" : "Active Plugin"
+         },
+         "critical_comparison" : null,
+         "critical_value" : null,
+         "dependencies" : [],
+         "description" : "Times the status check had failed",
+         "event_handler" : "",
+         "event_handler_always_exec" : "0",
+         "flap_detection_enabled" : "1",
+         "freshness_type" : "renotify",
+         "invertresults" : "0",
+         "keywords" : [],
+         "label" : null,
+         "level" : 0,
+         "markdown_filter" : "0",
+         "name" : "AWS - EC2 - Status Check Failed",
+         "notification_interval" : null,
+         "notification_options" : "w,c,r,u,f",
+         "oid" : null,
+         "plugin" : {
+            "name" : "check_aws_cloudwatch"
+         },
+         "retry_check_interval" : "60",
+         "sensitive_arguments" : "1",
+         "servicegroup" : {
+            "name" : "Cloud - AWS - EC2"
+         },
+         "snmptraprules" : [],
+         "stale_state" : "0",
+         "stale_text" : "",
+         "stale_threshold_seconds" : "3600",
+         "stalking" : "",
+         "volatile" : "0",
+         "warning_comparison" : null,
+         "warning_value" : null
+      }
+   ],
+   "servicegroup" : [
+      {
+         "name" : "Cloud - AWS - EC2"
+      }
+   ]
+}
