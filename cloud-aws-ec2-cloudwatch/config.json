@@ -20,7 +20,7 @@
          "arg2" : "",
          "arg3" : "",
          "arg4" : "",
-         "label1" : "",
+         "label1" : "Acccess ARN",
          "label2" : "",
          "label3" : "",
          "label4" : "",
@@ -118,7 +118,7 @@
    "servicecheck" : [
       {
          "alert_from_failure" : "1",
-         "args" : "-a $HOSTADDRESS$ -w 500 -c 800 -m 'AWS/EC2.CPUCreditBalance' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "args" : "-a $HOSTADDRESS$ -w 500 -c 800 -m 'AWS/EC2.CPUCreditBalance' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%' -R '%AWS_EC2_INSTANCE_ID:1%'",
          "attribute" : null,
          "calculate_rate" : "no",
          "cascaded_from" : null,
@@ -164,7 +164,7 @@
       },
       {
          "alert_from_failure" : "1",
-         "args" : "-a $HOSTADDRESS$ -w 500 -c 800 -m 'AWS/EC2.CPUCreditUsage' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "args" : "-a $HOSTADDRESS$ -w 500 -c 800 -m 'AWS/EC2.CPUCreditUsage' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%' -R '%AWS_EC2_INSTANCE_ID:1%'",
          "attribute" : null,
          "calculate_rate" : null,
          "cascaded_from" : null,
@@ -210,7 +210,7 @@
       },
       {
          "alert_from_failure" : "1",
-         "args" : "-a $HOSTADDRESS$ -w 80 -c 90 -m 'AWS/EC2.CPUUtilization' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "args" : "-a $HOSTADDRESS$ -w 80 -c 90 -m 'AWS/EC2.CPUUtilization' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%' -R '%AWS_EC2_INSTANCE_ID:1%'",
          "attribute" : null,
          "calculate_rate" : "no",
          "cascaded_from" : null,
@@ -256,7 +256,7 @@
       },
       {
          "alert_from_failure" : "1",
-         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.DiskReadBytes' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.DiskReadBytes' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%' -R '%AWS_EC2_INSTANCE_ID:1%'",
          "attribute" : null,
          "calculate_rate" : "no",
          "cascaded_from" : null,
@@ -302,7 +302,7 @@
       },
       {
          "alert_from_failure" : "1",
-         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.DiskReadOps' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.DiskReadOps' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%' -R '%AWS_EC2_INSTANCE_ID:1%'",
          "attribute" : null,
          "calculate_rate" : "no",
          "cascaded_from" : null,
@@ -348,7 +348,7 @@
       },
       {
          "alert_from_failure" : "1",
-         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.DiskWriteBytes' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.DiskWriteBytes' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%' -R '%AWS_EC2_INSTANCE_ID:1%'",
          "attribute" : null,
          "calculate_rate" : "no",
          "cascaded_from" : null,
@@ -394,7 +394,7 @@
       },
       {
          "alert_from_failure" : "1",
-         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.DiskWriteOps' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.DiskWriteOps' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%' -R '%AWS_EC2_INSTANCE_ID:1%'",
          "attribute" : null,
          "calculate_rate" : "no",
          "cascaded_from" : null,
@@ -440,7 +440,7 @@
       },
       {
          "alert_from_failure" : "1",
-         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.NetworkIn' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.NetworkIn' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%' -R '%AWS_EC2_INSTANCE_ID:1%'",
          "attribute" : null,
          "calculate_rate" : "no",
          "cascaded_from" : null,
@@ -486,7 +486,7 @@
       },
       {
          "alert_from_failure" : "1",
-         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.NetworkOut' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.NetworkOut' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%' -R '%AWS_EC2_INSTANCE_ID:1%'",
          "attribute" : null,
          "calculate_rate" : "no",
          "cascaded_from" : null,
@@ -532,7 +532,7 @@
       },
       {
          "alert_from_failure" : "1",
-         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.NetworkPacketsIn' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.NetworkPacketsIn' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%' -R '%AWS_EC2_INSTANCE_ID:1%'",
          "attribute" : null,
          "calculate_rate" : "no",
          "cascaded_from" : null,
@@ -578,7 +578,7 @@
       },
       {
          "alert_from_failure" : "1",
-         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.NetworkPacketsOut' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.NetworkPacketsOut' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%' -R '%AWS_EC2_INSTANCE_ID:1%'",
          "attribute" : null,
          "calculate_rate" : "no",
          "cascaded_from" : null,
@@ -624,7 +624,7 @@
       },
       {
          "alert_from_failure" : "1",
-         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.StatusCheckFailed' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%'",
+         "args" : "-a $HOSTADDRESS$ -m 'AWS/EC2.StatusCheckFailed' -i '%AWS_EC2_INSTANCE_ID%' -f '%AWS_CLOUDWATCH_AUTHENTICATION:1%' -A '%AWS_CLOUDWATCH_AUTHENTICATION:2%' -S '%AWS_CLOUDWATCH_AUTHENTICATION:3%' -r '%AWS_CLOUDWATCH_AUTHENTICATION:4%' -R '%AWS_EC2_INSTANCE_ID:1%'",
          "attribute" : null,
          "calculate_rate" : "no",
          "cascaded_from" : null,

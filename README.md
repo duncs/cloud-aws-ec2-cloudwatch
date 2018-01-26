@@ -38,6 +38,31 @@ aws_access_key_id = "Your Access Key Id"
 aws_secret_access_key = "Your Secret Key Id"
 ```
 
+### Using AWS ARNs
+
+If you have an Access and Secret key for one account, but need to monitoring instances in a different account, you need to make use of AWS roles and ARNs (Amazon Resource Name).
+
+Assuming Account A is the one you have the Access and Secret keys for, and Account B is the one you want to monitor instances in, follow these steps:
+
+* In Account A, within IAM->Users->"Username" for your user with the access key, get the 12 digit UserID (the number within the 'User ARN' on the Summary page)
+
+* In Account B, go to IAM->Roles->Create Role->Another AWS Account, enter the 12 digit number (leave all other options as default), click Next to go to Permissions and assign at least "AmazonEC2ReadOnlyAccess" and "CloudWatchReadOnlyAccess".  Make a note of the ARN when the role is created.
+
+* In Account A, within IAM->Policies->Create Policy, provide a suitable group name (such as 'AccessToEC2InAccountXXX') enter the following JSON, putting in the ARN from the previous step
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": {
+        "Effect": "Allow",
+        "Action": "sts:AssumeRole",
+        "Resource": "ARN_FROM_THE_PREVIOUS_STEP"
+    }
+}
+```
+
+* In Account A, within IAM->Users->"Uername", 'Add Permission' using the Policy created in the previous step
+
 ## Setup and Configuration
 
 To configure and utilize this Opspack, you need to add the 'Cloud - AWS - CloudWatch' Opspack to the host running the EC2 software.
@@ -47,7 +72,7 @@ Step 1: Add the host template and if you are using the Public DNS name, add it t
 
 ![Add host template](/docs/img/host-template.png?raw=true)
 
-Step 2: Add and configure the 'AWS_CLOUDWATCH_AUTHENTICATION' variable with either the file location or the access key and secret key, depending on your preferred way of supplying the access credential. Add the region you hosted in (default eu-west-1). Then add and configure the 'AWS_EC2_INSTANCE_ID' by adding the instance ID if you are using it.
+Step 2: Add and configure the 'AWS_CLOUDWATCH_AUTHENTICATION' variable with either the file location or the access key and secret key, depending on your preferred way of supplying the access credential. Add the region you hosted in (default eu-west-1).  Then add and configure the 'AWS_EC2_INSTANCE_ID' by adding the instance ID and the ARN if you are using them.
 
 ![Add variable](/docs/img/variable.png?raw=true)
 

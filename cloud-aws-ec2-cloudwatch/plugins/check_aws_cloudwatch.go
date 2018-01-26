@@ -21,6 +21,7 @@ import (
 	"github.com/ajgb/go-plugin"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
+	"github.com/aws/aws-sdk-go/aws/credentials/stscreds"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/cloudwatch"
 	"github.com/aws/aws-sdk-go/service/ec2"
@@ -31,6 +32,7 @@ import (
 	"time"
 )
 
+var conf *aws.Config
 var sess *session.Session
 var check *plugin.Plugin
 var svc *cloudwatch.CloudWatch
@@ -39,6 +41,7 @@ var opts struct {
 	HostAddress   string `short:"a" long:"address" description:"Address of instance"`
 	Mode          string `short:"m" long:"mode" description:"Mode" required:"true"`
 	Warning       string `short:"w" long:"warning" description:"Warning"`
+	ARN           string `short:"R" long:"arn-role" description:"Pass the ARN directly here, the default account should have AssumeRole(STS) for this ARN"`
 	Critical      string `short:"c" long:"critical" description:"Critical"`
 	AccessKey     string `short:"A" long:"accesskey" description:"Access Key credential"`
 	SecretKey     string `short:"S" long:"secretkey" description:"Secret Key credential"`
@@ -72,17 +75,27 @@ func main() {
 	} else {
 		creds = credentials.NewStaticCredentials(opts.AccessKey, opts.SecretKey, "")
 	}
-	conf := aws.Config{
+	conf = &aws.Config{
 		Credentials: creds,
 		Region:      aws.String(opts.Region),
 	}
-	sess, err = session.NewSessionWithOptions(session.Options{Config: conf})
+	sess, err = session.NewSessionWithOptions(session.Options{Config: *conf})
 
 	if err != nil {
 		check.ExitUnknown("Failed to create session. Check your AWS Access Key and Secret Key.")
 	}
 
-	svc = cloudwatch.New(sess)
+	// If an ARN has been provided in the args, assume the role at this point
+	if opts.ARN != "" {
+		creds = stscreds.NewCredentials(sess, opts.ARN)
+		conf = &aws.Config{
+			Credentials: creds,
+			Region:      aws.String(opts.Region),
+		}
+	}
+
+	svc = cloudwatch.New(sess, conf)
+
 	if svc == nil {
 		check.ExitUnknown("Unable to login to Cloudwatch")
 	}
@@ -365,7 +378,7 @@ func ec2SpecialCase() string {
 	if opts.SearchName != "" && opts.HostAddress == "" {
 		return opts.SearchName
 	} else {
-		ecc := ec2.New(sess)
+		ecc := ec2.New(sess, conf)
 		if ecc == nil {
 			check.ExitUnknown("Unable to login to EC2")
 		}
@@ -554,6 +567,9 @@ func checkFilePath(check *plugin.Plugin) string {
 			check.ExitUnknown("Error creating temp file unable to access " + path)
 		}
 	}
+    if opts.DebugMode {
+        fmt.Println("Storing check data in: ", path)
+    }
 	return path
 }
 
